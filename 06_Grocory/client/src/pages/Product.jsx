@@ -22,7 +22,7 @@ const Product = () => {
     return (
         <div className=' mt-[10vh]'>
             <h1 className="text-3xl lg:text-4xl font-medium">All products</h1>
-            <div className="flex flex-wrap gap-[3vw]">
+            <div className="flex flex-wrap gap-[3vw] mt-1">
                 {
                     filteredProducts.filter((products) => products.inStock).map((product, index) =>
                         <ProductCards key={index} product={product}></ProductCards>

@@ -54,13 +54,13 @@ const Auth = () => {
         });
     };
 
-    
+
 
     return (
         <>
             <motion.div
                 onClick={() => setShowUserLogin(false)}
-                className=" relative z-1000 flex items-center justify-center  min-h-[100vh]">
+                className=" relative z-1000 flex items-center justify-center  min-h-[90vh] overflow-hidden scroll-none">
                 <motion.form
                     onClick={(e) => e.stopPropagation()}
                     onSubmit={handleSubmit}

@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
 
     return (
-        <div className="max-w-6xl w-full px-6 mt-[10vh]">
+        <div className="max-w-6xl md:h-[80vh] h-[100%] w-full px-6 mt-[10vh]">
 
             <p>
                 <Link to={'/'}>Home</Link> /
@@ -93,7 +93,7 @@ const ProductDetails = () => {
                         ))}
                     </ul>
 
-                    <div className="flex flex-col md:flex-row items-center mt-10 gap-4">
+                    <div className="flex flex-col md:flex-row items-center mt-10 gap-4 ">
 
                         <div onClick={(e) => e.stopPropagation()}>
                             {cartItem?.[product._id] ? (
@@ -138,7 +138,7 @@ const ProductDetails = () => {
                                     navigate("/cart");
                                 }
                             }}
-                            className="w-[70vw] md:w-[20vw] py-2.5 text-lg font-semibold bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition">
+                            className="w-[70vw] md:w-[20vw]  py-2.5 text-lg font-semibold bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition">
                             Buy Now
                         </button>
                 </div>

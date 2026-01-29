@@ -59,15 +59,15 @@ const App = () => {
         <Route path="/add-address" element={<AddAddress />} />
 
         {/* SELLER LOGIN */}
-        <Route
+        {/* <Route
           path="/seller"
           element={isSeller ? <Navigate to="/seller/add-product" /> : <SellerLogin />}
-        />
+        /> */}
 
         {/* SELLER DASHBOARD (PROTECTED) */}
         <Route
           path="/seller"
-          element={isSeller ? <SellerLayout /> : <Navigate to="/seller" />}
+          element={isSeller ? <SellerLayout /> : <SellerLogin />}
         >
           <Route path="add-product" element={<AddProduct />} />
           <Route path="product-list" element={<ProductsList />} />

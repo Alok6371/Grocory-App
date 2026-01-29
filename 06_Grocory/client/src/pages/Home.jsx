@@ -7,7 +7,7 @@ import NewsLetters from '../componets/home/NewsLetters'
 
 const Home = () => {
     return (
-        <div className='mt-7 mb-7' id='home'>
+        <div className='mt-7 mb-7 m-10' id='home'>
             {/* <Hero />
             <Category />
             <BestSeller />

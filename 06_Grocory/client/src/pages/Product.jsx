@@ -20,7 +20,7 @@ const Product = () => {
         }
     }, [products, searchQuery])
     return (
-        <div className=' mt-[10vh]'>
+        <div className=' mt-[10vh] m-16'>
             <h1 className="text-3xl lg:text-4xl font-medium">All products</h1>
             <div className="flex flex-wrap gap-[3vw] mt-1">
                 {

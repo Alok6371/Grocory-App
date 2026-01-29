@@ -19,13 +19,21 @@ import ScrollToHash from './ScrollToHash'
 import NeedHelp from './componets/footer/NeedHelp'
 import Faq from './componets/footer/Faq'
 import AddAddress from './pages/AddAddress'
+import SellerLayout from './pages/seller/SellerLayout'
+import SellerLogin from './componets/seller/SellerLogin'
+import AddProduct from './pages/seller/AddProduct'
+import ProductsList from './pages/seller/ProductsList'
+import Orders from './pages/seller/Orders'
+
 
 const App = () => {
 
-  const { showUserLogin } = useContext(AppContext)
-  const location = useLocation()
   const pathname = useLocation()
+  const location = useLocation()
+
+  const { isSeller, showUserLogin } = useContext(AppContext)
   const isSellerPath = location.pathname.includes('seller')
+
 
   return (
 
@@ -34,18 +42,19 @@ const App = () => {
       <Toaster
         position="top-center"
         toastOptions={{
-
           duration: 600,
-          // removeDelay: 1000,
         }}
       />
+
       <ScrollTop />
-      {!isSellerPath && <Navbar />}
-
-      {showUserLogin && <Auth />}
-
-
       <ScrollToHash />
+
+
+      {isSellerPath ? null : <Navbar />}
+
+      {showUserLogin ? <Auth /> : null}
+
+
       <div className='px-6 md:px-16 lg:px-24 xl:px-32 h-[90vh]'>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -57,12 +66,27 @@ const App = () => {
           <Route path='/need-help' element={<NeedHelp />} />
           <Route path='/faq' element={<Faq />} />
           <Route path='/add-address' element={<AddAddress />} />
-        </Routes>
-        <Footer />
-      </div>
-      {
-      }
 
+          <Route path='/seller'
+            element={isSeller ?
+              <SellerLayout /> :
+              <SellerLogin />} >
+            <Route index 
+            path='add-product'
+            element={isSeller ? <AddProduct /> : null} />
+            <Route path='product-list'
+              element={isSeller ? <ProductsList /> : null}
+            />
+            <Route path='orders'
+              element={isSeller ? <Orders /> : null}
+            />
+          </Route>
+
+        </Routes>
+        {
+          isSellerPath ? null : <Footer />
+        }
+      </div>
     </div>
   )
 }

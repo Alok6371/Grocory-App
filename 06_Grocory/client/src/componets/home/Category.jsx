@@ -7,7 +7,7 @@ const Category = () => {
     const { navigate } = useContext(AppContext)
 
     return (
-        <div className='mt-16 h-[100%] scroll-mt-24' id='category'>
+        <div className='mt-1 h-[100%] scroll-mt-24' id='category'>
             <p className='text-2xl font-medium md:text-3xl'>Categories</p>
 
             <div className='my-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'>

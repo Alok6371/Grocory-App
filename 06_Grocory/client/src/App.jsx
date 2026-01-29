@@ -67,7 +67,7 @@ const App = () => {
           <Route path='/faq' element={<Faq />} />
           <Route path='/add-address' element={<AddAddress />} />
 
-          <Route path='/seller'
+          {/* <Route path='/seller'
             element={isSeller ?
               <SellerLayout /> :
               <SellerLogin />} >
@@ -80,7 +80,7 @@ const App = () => {
             <Route path='orders'
               element={isSeller ? <Orders /> : null}
             />
-          </Route>
+          </Route> */}
 
         </Routes>
         {

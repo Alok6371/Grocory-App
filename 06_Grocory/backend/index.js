@@ -10,25 +10,20 @@ connectDB();
 
 const app = express();
 
-/* 🔴 BODY PARSERS — MUST BE FIRST */
-app.use(express.json());
+/* 🔥 REQUIRED MIDDLEWARE */
+app.use(express.json()); // <-- THIS FIXES req.body
 app.use(express.urlencoded({ extended: true }));
-
-/* 🔴 OTHER MIDDLEWARE */
 app.use(cookieParser());
+
 app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
+  origin: "http://localhost:3000",
+  credentials: true,
 }));
 
-/* 🔴 ROUTES AFTER MIDDLEWARE */
+/* ROUTES */
 app.use("/api/users", userRoutes);
 
-app.get("/", (req, res) => {
-    res.send("Hello Alok");
-});
-
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });

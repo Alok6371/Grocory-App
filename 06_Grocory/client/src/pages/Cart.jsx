@@ -55,7 +55,11 @@ const Cart = () => {
   }, [products, cartItem]);
 
   const placeOrder = () => {
-    navigate('/my-orders')
+    {
+      paymentMethod === "COD" ?
+        navigate('/my-orders') :
+        navigate('paytmmp://cash_wallet?featuretype=money_transfer&pa=palok2406@ptyes&am=199.92&cu=INR&tn=GrocoryItem')
+    }
   }
 
   return (
@@ -207,7 +211,6 @@ const Cart = () => {
                 </div>
 
                 <p
-                  onClick={(e) => setPamentMethod(e.target.value)}
                   className="text-sm font-medium uppercase mt-6">
                   Payment Method
                 </p>
@@ -218,6 +221,7 @@ const Cart = () => {
                   <option
                     value="COD">Cash On Delivery</option>
                   <option
+
                     value="Online">Online Payment</option>
                 </select>
               </div>
@@ -249,7 +253,7 @@ const Cart = () => {
                 {paymentMethod === "COD" ? "Place order" : "Pay Now"}
               </button>
             </div>
-          </div>
+          </div >
         )}
       </>
     )

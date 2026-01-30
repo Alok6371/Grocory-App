@@ -24,12 +24,23 @@ import SellerLogin from "./componets/seller/SellerLogin";
 import AddProduct from "./pages/seller/AddProduct";
 import ProductsList from "./pages/seller/ProductsList";
 import Orders from "./pages/seller/Orders";
+import SellerWelcome from "./componets/seller/SellerWelcome";
 
 const App = () => {
   const location = useLocation();
   const { isSeller, showUserLogin } = useContext(AppContext);
 
   const isSellerPath = location.pathname.startsWith("/seller");
+
+  // 👉 IF AUTH IS OPEN, SHOW ONLY AUTH
+  if (showUserLogin) {
+    return (
+      <>
+        <Toaster position="top-center" toastOptions={{ duration: 600 }} />
+        <Auth />
+      </>
+    );
+  }
 
   return (
     <div className="text-default min-h-screen">
@@ -41,9 +52,6 @@ const App = () => {
 
       {/* Navbar */}
       {!isSellerPath && <Navbar />}
-
-      {/* Auth Modal */}
-      {showUserLogin && <Auth />}
 
       {/* ROUTES */}
       <Routes>
@@ -58,11 +66,12 @@ const App = () => {
         <Route path="/faq" element={<Faq />} />
         <Route path="/add-address" element={<AddAddress />} />
 
-        {/* SELLER DASHBOARD (PROTECTED) */}
+        {/* SELLER ROUTES */}
         <Route
           path="/seller"
           element={isSeller ? <SellerLayout /> : <SellerLogin />}
         >
+          <Route index element={<SellerWelcome />} />
           <Route path="add-product" element={<AddProduct />} />
           <Route path="product-list" element={<ProductsList />} />
           <Route path="orders" element={<Orders />} />
@@ -74,5 +83,7 @@ const App = () => {
     </div>
   );
 };
+
+
 
 export default App;

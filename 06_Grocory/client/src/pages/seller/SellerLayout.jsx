@@ -52,7 +52,7 @@ const SellerLayout = () => {
       <div className="flex flex-1 pt-14">
 
         {/* SIDEBAR - DESKTOP (LEFT) */}
-        <div className="hidden md:flex w-64 border-r border-gray-300 pt-4 flex-col">
+        <div className="hidden fixed md:flex w-64 border-r border-gray-300 pt-4 flex-col">
           {sidebarLinks.map((item) => (
             <NavLink
               key={item.name}
@@ -74,7 +74,7 @@ const SellerLayout = () => {
         </div>
 
         {/* PAGE CONTENT */}
-        <div className="flex-1 p-4 md:p-6 pb-20 md:pb-6">
+        <div className="flex-1 md:ml-[15%]   p-4 md:p-6 pb-20 md:pb-6">
           <Outlet />
         </div>
       </div>

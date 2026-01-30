@@ -8,12 +8,16 @@ export const AppContext = createContext(null)
 
 const AppContextProvider = ({ children }) => {
     const navigate = useNavigate()
+
+    //user Login
     const [user, setUser] = useState(true)
 
     //Seller pat
     const [isSeller, setIsSeller] = useState(true)
 
-    const [showUserLogin, setShowUserLogin] = useState(false)
+    //Show the login page
+    const [showUserLogin, setShowUserLogin] = useState(true)
+
     const [products, setproduct] = useState([])
     const [cartItem, setCartItems] = useState({})
     const [searchQuery, setSearchQuery] = useState({})

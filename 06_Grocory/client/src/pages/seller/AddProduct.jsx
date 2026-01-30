@@ -25,7 +25,8 @@ const AddProduct = () => {
     }
 
     return (
-        <div className="py-10 flex flex-col justify-between bg-white">
+        <div className="py-6  flex flex-col justify-between bg-white">
+            <h2 className="pb-4 text-lg font-semibold">Add product</h2>
             <form
                 onSubmit={handleSubmit}
                 className=" p-4 space-y-5 max-w-lg">

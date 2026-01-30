@@ -5,7 +5,7 @@ const ProductsList = () => {
     const { products } = useContext(AppContext);
 
     return (
-        <div className="flex-1 py-6 md:py-10">
+        <div className="flex-1  md:py-6 ">
             <div className="w-full md:p-10 p-4">
                 <h2 className="pb-4 text-lg font-semibold">All Products</h2>
 

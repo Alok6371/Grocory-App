@@ -40,7 +40,7 @@ const SellerLayout = () => {
           </h1>
         </Link>
 
-        <button
+        <button  
           onClick={handleLogout}
           className="border rounded-full text-white text-sm px-4 py-1"
         >

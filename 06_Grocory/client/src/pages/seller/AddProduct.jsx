@@ -5,7 +5,7 @@ import { assets } from "../../assets/greencart_assets/assets";
 const AddProduct = () => {
     const { products } = useContext(AppContext);
 
-    const [files, setFiles] = useState('')
+    const [files, setFiles] = useState([])
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
@@ -15,19 +15,19 @@ const AddProduct = () => {
 
 
     // get unique categories
-    const {categories} = useContext(AppContext);
+    const categories = [...new Set(products.map(p => p.category))];
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, price, description, category,offerPrice,files);
+        console.log(name, price, description, category, offerPrice, files);
 
     }
 
     return (
         <div className="py-10 flex flex-col justify-between bg-white">
             <form
-                onClick={() => handleSubmit}
+                onSubmit={handleSubmit}
                 className=" p-4 space-y-5 max-w-lg">
                 {/* Images */}
                 <div>

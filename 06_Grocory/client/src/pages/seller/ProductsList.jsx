@@ -11,9 +11,9 @@ const ProductsList = () => {
 
                 {/* ================= MOBILE VIEW (CARDS) ================= */}
                 <div className="space-y-4 md:hidden">
-                    {products.map((product, index) => (
+                    {products.map((product) => (
                         <div
-                            key={index}
+                            key={product._id}
                             className="bg-white border rounded-xl p-4 shadow-sm flex gap-3"
                         >
                             <img
@@ -64,31 +64,31 @@ const ProductsList = () => {
                             </thead>
 
                             <tbody className="text-sm text-gray-600">
-                                {products.map((product, index) => (
+                                {products.map((product) => (
                                     <tr
-                                        key={index}
+                                        key={product._id}
                                         className="border-t hover:bg-gray-50 transition"
                                     >
                                         <td className="px-6 py-4 flex items-center gap-3">
                                             <img
                                                 src={product.image}
                                                 alt="Product"
-                                                className="w-12 h-12 rounded-md object-cover border"
+                                                className="w-20 h-20 rounded-md object-cover border"
                                             />
                                             <span className="font-medium text-[20px] text-gray-800">
                                                 {product.name}
                                             </span>
                                         </td>
 
-                                        <td className="px-6 py-4 text-[15px] font-bold">
+                                        <td className="px-6 py-4 text-[20px] font-bold">
                                             {product.category}
                                         </td>
-                                        <td className="px-6 py-4 text-[15px] font-bold text-black">
+                                        <td className="px-6 py-4 text-[20px] font-bold text-black">
                                             {product.price}
                                         </td>
 
 
-                                        <td className="px-6 py-4 text-[15px] font-semibold text-black">
+                                        <td className="px-6 py-4 text-[20px] font-semibold text-black">
                                             ₹{product.offerPrice}
                                         </td>
 
@@ -99,7 +99,7 @@ const ProductsList = () => {
                                                     className="sr-only peer"
                                                     defaultChecked={product.inStock}
                                                 />
-                                                <div className="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-green-500 transition"></div>
+                                                <div className="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 transition"></div>
                                                 <span className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-4"></span>
                                             </label>
                                         </td>

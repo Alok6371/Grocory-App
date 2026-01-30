@@ -53,17 +53,17 @@ const SellerLayout = () => {
 
         {/* SIDEBAR - DESKTOP (LEFT) */}
         <div className="hidden md:flex w-64 border-r border-gray-300 pt-4 flex-col">
-          {sidebarLinks.map((item, index) => (
+          {sidebarLinks.map((item) => (
             <NavLink
-              key={index}
+              key={item.name}
               to={item.path}
-              end
+
+              end={item.path === "/seller"}
               className={({ isActive }) =>
                 `flex items-center py-3 px-4 gap-3 transition
-                ${
-                  isActive
-                    ? "border-r-4 bg-indigo-500/10 border-indigo-500 text-indigo-500"
-                    : "hover:bg-gray-100/90 text-gray-700"
+                ${isActive
+                  ? "border-r-4 bg-indigo-500/10 text-[1.5em] border-indigo-500 text-indigo-500"
+                  : "hover:bg-gray-100/90 text-gray-700"
                 }`
               }
             >

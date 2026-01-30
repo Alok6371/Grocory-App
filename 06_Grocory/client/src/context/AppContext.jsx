@@ -84,6 +84,8 @@ const AppContextProvider = ({ children }) => {
 
     const value = {
         navigate,
+
+        //seller Part
         isSeller,
         setIsSeller,
 

@@ -1,17 +1,34 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import { assets } from "../../assets/greencart_assets/assets";
 
 const AddProduct = () => {
     const { products } = useContext(AppContext);
 
-    const [category, setCategory] = useState("");
+    const [files, setFiles] = useState('')
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState('')
+    const [description, setDescription] = useState('')
+    const [category, setCategory] = useState('')
+    const [offerPrice, setOfferPrice] = useState('')
+
+
 
     // get unique categories
-    const categories = [...new Set(products.map(p => p.category))];
+    const {categories} = useContext(AppContext);
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(name, price, description, category,offerPrice,files);
+
+    }
 
     return (
         <div className="py-10 flex flex-col justify-between bg-white">
-            <form className=" p-4 space-y-5 max-w-lg">
+            <form
+                onClick={() => handleSubmit}
+                className=" p-4 space-y-5 max-w-lg">
                 {/* Images */}
                 <div>
                     <p className="text-base font-medium">Product Image</p>
@@ -21,6 +38,11 @@ const AddProduct = () => {
                             .map((_, index) => (
                                 <label key={index} htmlFor={`image${index}`}>
                                     <input
+                                        onChange={(e) => {
+                                            const updatedFiles = [...files]
+                                            updatedFiles[index] = e.target.files[0]
+                                            setFiles(updatedFiles)
+                                        }}
                                         accept="image/*"
                                         type="file"
                                         id={`image${index}`}
@@ -28,7 +50,7 @@ const AddProduct = () => {
                                     />
                                     <img
                                         className="max-w-24 cursor-pointer"
-                                        src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/e-commerce/uploadArea.png"
+                                        src={files[index] ? URL.createObjectURL(files[index]) : assets.upload_area}
                                         alt="upload"
                                         width={100}
                                         height={100}
@@ -43,6 +65,7 @@ const AddProduct = () => {
                     <label className="text-base font-medium">Product Name</label>
                     <input
                         type="text"
+                        onChange={(e) => setName(e.target.value)}
                         placeholder="Type here"
                         className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
                         required
@@ -56,6 +79,7 @@ const AddProduct = () => {
                     </label>
                     <textarea
                         rows={4}
+                        onChange={(e) => setDescription(e.target.value)}
                         className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none"
                         placeholder="Type here"
                     />
@@ -84,6 +108,7 @@ const AddProduct = () => {
                         <label className="text-base font-medium">Product Price</label>
                         <input
                             type="number"
+                            onChange={(e) => setPrice(e.target.value)}
                             placeholder="0"
                             className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
                             required
@@ -94,6 +119,7 @@ const AddProduct = () => {
                         <label className="text-base font-medium">Offer Price</label>
                         <input
                             type="number"
+                            onChange={(e) => setOfferPrice(e.target.value)}
                             placeholder="0"
                             className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
                             required
@@ -101,7 +127,9 @@ const AddProduct = () => {
                     </div>
                 </div>
 
-                <button className="px-8 py-2.5 bg-indigo-500 text-white font-medium rounded">
+                <button
+                    type="submit"
+                    className="px-8 py-2.5 bg-indigo-500 text-white font-medium rounded">
                     ADD
                 </button>
             </form>

@@ -14,12 +14,12 @@ const SellerWelcome = () => {
     }, [navigate]);
 
     return (
-        <div className="h-screen w-full flex items-center justify-center bg-gray-300">
+        <div className="h-screen w-full flex items-center justify-center ">
             <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="bg-white rounded-2xl shadow-2xl p-10 text-center max-w-md"
+                className="bg-gray-400 rounded-2xl shadow-2xl p-10 text-center max-w-md"
             >
                 <motion.h1
                     initial={{ y: -20, opacity: 0 }}
@@ -45,7 +45,7 @@ const SellerWelcome = () => {
                     transition={{ delay: 1 }}
                     className="mt-6 text-indigo-600 font-medium"
                 >
-                    Redirecting to dashboard...
+                    Redirecting to Product page......
                 </motion.div>
             </motion.div>
         </div>

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import "./App.css";
 
@@ -30,10 +30,11 @@ const App = () => {
   const location = useLocation();
   const { isSeller, showUserLogin } = useContext(AppContext);
 
+  // Check if current path is seller
   const isSellerPath = location.pathname.startsWith("/seller");
 
-  // 👉 IF AUTH IS OPEN, SHOW ONLY AUTH
-  if (showUserLogin) {
+  // Show USER login only for non-seller routes
+  if (showUserLogin && !isSellerPath) {
     return (
       <>
         <Toaster position="top-center" toastOptions={{ duration: 600 }} />
@@ -44,16 +45,14 @@ const App = () => {
 
   return (
     <div className="text-default min-h-screen">
-      {/* TOASTER */}
       <Toaster position="top-center" toastOptions={{ duration: 600 }} />
 
       <ScrollTop />
       <ScrollToHash />
 
-      {/* Navbar */}
+      {/* Navbar only for users */}
       {!isSellerPath && <Navbar />}
 
-      {/* ROUTES */}
       <Routes>
         {/* USER ROUTES */}
         <Route path="/" element={<Home />} />
@@ -78,12 +77,10 @@ const App = () => {
         </Route>
       </Routes>
 
-      {/* Footer */}
+      {/* Footer only for users */}
       {!isSellerPath && <Footer />}
     </div>
   );
 };
-
-
 
 export default App;

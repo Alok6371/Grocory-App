@@ -1,32 +1,34 @@
-import express from "express"
-import cors from "cors"
-import cookieParser from "cookie-parser"
-import dotenv from "dotenv"
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
 import connectDB from "./config/connectDb.js";
+import userRoutes from "./routes/user.route.js";
 
-import userRoutes from "./routes/user.route.js"
 dotenv.config();
-
 connectDB();
-const allowedOrigins = ['http://localhost:5173']
 
+const app = express();
 
-//Middleware
-const app = express()
-app.use(cors({
-    origin: allowedOrigins, credentials: true
-}))
+/* 🔴 BODY PARSERS — MUST BE FIRST */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+/* 🔴 OTHER MIDDLEWARE */
 app.use(cookieParser());
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 
-app.use('/api/user', userRoutes)
+/* 🔴 ROUTES AFTER MIDDLEWARE */
+app.use("/api/users", userRoutes);
 
-//Api Endpoint
-app.get('/', (req, res) => {
-    res.send("Hello Alok")
-})
+app.get("/", (req, res) => {
+    res.send("Hello Alok");
+});
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-    console.log(`server Running on port ${PORT}`);
-
-})
+    console.log(`Server running on port ${PORT}`);
+});

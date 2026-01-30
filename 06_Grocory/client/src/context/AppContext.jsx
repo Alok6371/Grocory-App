@@ -13,7 +13,7 @@ const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState(true)
 
     //Seller pat
-    const [isSeller, setIsSeller] = useState(true)
+    const [isSeller, setIsSeller] = useState(false)
 
     //Show the login page
     const [showUserLogin, setShowUserLogin] = useState(true)

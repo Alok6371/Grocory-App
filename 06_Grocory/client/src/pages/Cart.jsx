@@ -212,10 +212,12 @@ const Cart = () => {
                   Payment Method
                 </p>
 
-                <select className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
-                  <option value="COD">Cash On Delivery</option>
+                <select
+                  onClick={(e) => setPamentMethod(e.target.value)}
+                  className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
                   <option
-
+                    value="COD">Cash On Delivery</option>
+                  <option
                     value="Online">Online Payment</option>
                 </select>
               </div>

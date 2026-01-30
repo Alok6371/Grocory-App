@@ -9,7 +9,7 @@ const MyOrder = () => {
     }, []);
 
     return (
-        <div className="m-6 md:m-16 mt-[9vh] min-h-[80vh]">
+        <div className="m-6 md:m-16 mt-[9vh] md:mt-[10vh] min-h-[80vh]">
             <p className="text-2xl md:text-3xl font-semibold mb-6">
                 My Orders
             </p>

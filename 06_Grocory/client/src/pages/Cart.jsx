@@ -58,7 +58,8 @@ const Cart = () => {
     {
       paymentMethod === "COD" ?
         navigate('/my-orders') :
-        navigate('paytmmp://cash_wallet?featuretype=money_transfer&pa=palok2406@ptyes&am=199.92&cu=INR&tn=GrocoryItem')
+        navigate(`paytmmp://cash_wallet?featuretype=money_transfer&pa=palok2406@ptyes&am=${Number(totalCartAmount(products) + taxAmount)}&cu=INR&tn=GrocoryItem`)
+        
     }
   }
 

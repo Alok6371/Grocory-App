@@ -34,7 +34,7 @@ const SellerLayout = () => {
 
       {/* NAVBAR - ALWAYS TOP */}
       <div className="fixed top-0 left-0 right-0 h-14 flex items-center justify-between px-4 md:px-8 border-b border-gray-300 bg-gray-500 z-50">
-        <Link to="/seller/add-product">
+        <Link to="/seller">
           <h1 className="text-xl md:text-2xl font-semibold text-orange-600">
             Grocery App
           </h1>

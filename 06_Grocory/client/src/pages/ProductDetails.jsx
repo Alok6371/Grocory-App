@@ -3,7 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { Link, useParams } from "react-router-dom";
 import { assets } from "../assets/greencart_assets/assets";
 
-const dateProductDetails = () => {
+const ProductDetails = () => {
 
     const { products, navigate, addToCart, cartItem, removeCart } = useContext(AppContext);
     const { id } = useParams();

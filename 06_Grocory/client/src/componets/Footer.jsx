@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
 
     return (
-        <div className="px-1   bottom-0 " >
+        <div className="px-1  m-16 bottom-0 " >
             <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500">
                 <div>
                     <p className="text-[2em] text-orange-800 font-semibold">Grocory App</p>

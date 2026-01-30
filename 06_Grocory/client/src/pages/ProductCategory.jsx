@@ -14,7 +14,7 @@ const ProductCategory = () => {
   const filteredProducts = products.filter((product) => product.category.toLocaleLowerCase() === category.toLocaleLowerCase())
 
   return (
-    <div className='mt-[10vh] h-[80vh]'>
+    <div className='mt-[10vh] m-16 h-[80vh]'>
       {
         searchCategory && (
           <div className='flex flex-col items-end w-max'>

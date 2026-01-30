@@ -1,59 +1,103 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../context/AppContext'
-import { MdOutlineDashboard } from "react-icons/md"
-import { GoVersions } from "react-icons/go";
-import { IoChatboxEllipsesOutline } from "react-icons/io5";
-
+import React, { useContext } from "react";
+import { assets } from "../../assets/greencart_assets/assets";
+import { NavLink, Outlet, Link } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const SellerLayout = () => {
+  const { setIsSeller, navigate } = useContext(AppContext);
 
-    const dashboardicon = (
-        <MdOutlineDashboard />
-    );
+  const sidebarLinks = [
+    {
+      name: "Add",
+      path: "/seller/add-product",
+      icon: <img src={assets.add_icon} alt="" className="w-6" />,
+    },
+    {
+      name: "Products",
+      path: "/seller/product-list",
+      icon: <img src={assets.product_list_icon} alt="" className="w-6" />,
+    },
+    {
+      name: "Orders",
+      path: "/seller/orders",
+      icon: <img src={assets.order_icon} alt="" className="w-6" />,
+    },
+  ];
 
-    const overviewicon = (
-        <GoVersions />
-    );
+  const handleLogout = () => {
+    navigate("/seller");
+    setIsSeller(false);
+  };
 
-    const chaticon = (
-        <IoChatboxEllipsesOutline />
-    );
+  return (
+    <div className="min-h-screen flex flex-col">
 
-    const sidebarLinks = [
-        { name: "Dashboard", path: "/", icon: dashboardicon },
-        { name: "Overview", path: "/overview", icon: overviewicon },
-        { name: "Chat", path: "/chat", icon: chaticon },
-    ];
+      {/* NAVBAR - ALWAYS TOP */}
+      <div className="fixed top-0 left-0 right-0 h-14 flex items-center justify-between px-4 md:px-8 border-b border-gray-300 bg-gray-500 z-50">
+        <Link to="/seller/add-product">
+          <h1 className="text-xl md:text-2xl font-semibold text-orange-600">
+            Grocery App
+          </h1>
+        </Link>
 
-    return (
-        <div>
+        <button
+          onClick={handleLogout}
+          className="border rounded-full text-white text-sm px-4 py-1"
+        >
+          Logout
+        </button>
+      </div>
 
-            <div className="flex items-center justify-between px-4 md:px-8 border-b border-gray-300 py-3 bg-white transition-all duration-300">
-                <a href="https://prebuiltui.com">
-                    <img className="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg" alt="dummyLogoColored" />
-                </a>
-                <div className="flex items-center gap-5 text-gray-500">
-                    <p>Hi! Admin</p>
-                    <button className='border rounded-full text-sm px-4 py-1'>Logout</button>
-                </div>
-            </div>
-            <div className="md:w-64 w-16 border-r h-[550px] text-base border-gray-300 pt-4 flex flex-col transition-all duration-300">
-                {sidebarLinks.map((item, index) => (
-                    <a href={item.path} key={index}
-                        className={`flex items-center py-3 px-4 gap-3 
-                            ${index === 0 ? "border-r-4 md:border-r-[6px] bg-indigo-500/10 border-indigo-500 text-indigo-500"
-                                : "hover:bg-gray-100/90 border-white text-gray-700"
-                            }`
-                        }
-                    >
-                        {item.icon}
-                        <p className="md:block hidden text-center">{item.name}</p>
-                    </a>
-                ))}
-            </div>
+      {/* BODY */}
+      <div className="flex flex-1 pt-14">
+
+        {/* SIDEBAR - DESKTOP (LEFT) */}
+        <div className="hidden md:flex w-64 border-r border-gray-300 pt-4 flex-col">
+          {sidebarLinks.map((item, index) => (
+            <NavLink
+              key={index}
+              to={item.path}
+              end
+              className={({ isActive }) =>
+                `flex items-center py-3 px-4 gap-3 transition
+                ${
+                  isActive
+                    ? "border-r-4 bg-indigo-500/10 border-indigo-500 text-indigo-500"
+                    : "hover:bg-gray-100/90 text-gray-700"
+                }`
+              }
+            >
+              {item.icon}
+              <p>{item.name}</p>
+            </NavLink>
+          ))}
         </div>
 
-    );
-}
+        {/* PAGE CONTENT */}
+        <div className="flex-1 p-4 md:p-6 pb-20 md:pb-6">
+          <Outlet />
+        </div>
+      </div>
 
-export default SellerLayout
+      {/* SIDEBAR - MOBILE (BOTTOM TAB BAR) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 h-16 flex justify-around items-center border-t bg-white z-50">
+        {sidebarLinks.map((item, index) => (
+          <NavLink
+            key={index}
+            to={item.path}
+            end
+            className={({ isActive }) =>
+              `flex flex-col items-center text-xs
+              ${isActive ? "text-indigo-600" : "text-gray-600"}`
+            }
+          >
+            {item.icon}
+            <span>{item.name}</span>
+          </NavLink>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default SellerLayout;

@@ -25,8 +25,8 @@ const AddAddress = () => {
     }
 
     return (
-        <div className='mt-[10vh] flex flex-col md:flex-row gap-6 p-6 bg-gray-100 rounded-lg shadow-md'>
-            
+        <div className='mt-[10vh] h-[75vh] m-16 flex flex-col md:flex-row gap-6 p-6 bg-gray-100 rounded-lg shadow-md'>
+
             {/* Left Side */}
             <div className='flex-1 bg-white p-6 rounded-lg shadow'>
                 <h2 className='text-3xl font-semibold mb-4'>Address Details</h2>
@@ -40,7 +40,7 @@ const AddAddress = () => {
                             name='firstName'
                             value={formData.firstName}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -52,7 +52,7 @@ const AddAddress = () => {
                             name='lastName'
                             value={formData.lastName}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -64,7 +64,7 @@ const AddAddress = () => {
                             name='email'
                             value={formData.email}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -76,7 +76,7 @@ const AddAddress = () => {
                             name='street'
                             value={formData.street}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -88,7 +88,7 @@ const AddAddress = () => {
                             name='city'
                             value={formData.city}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -100,7 +100,7 @@ const AddAddress = () => {
                             name='state'
                             value={formData.state}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -112,7 +112,7 @@ const AddAddress = () => {
                             name='zip'
                             value={formData.zip}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -124,7 +124,7 @@ const AddAddress = () => {
                             name='country'
                             value={formData.country}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>
@@ -136,7 +136,7 @@ const AddAddress = () => {
                             name='phone'
                             value={formData.phone}
                             onChange={handleChange}
-                            className='w-full p-2 border rounded-md'
+                            className='w-full p-2 border-2 border-gray-400 rounded-md'
                             required
                         />
                     </div>

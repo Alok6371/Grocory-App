@@ -27,7 +27,7 @@ const SellerLogin = () => {
 
     return (
         !isSeller &&
-        <motion.div className="flex items-center justify-center min-h-[90vh]">
+        <motion.div className="flex items-center justify-center min-h-[100vh] bg-gray-400">
             <motion.form
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0, y: -100 }}

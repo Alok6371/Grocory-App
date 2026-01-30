@@ -2,8 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { dummyProducts } from "../assets/greencart_assets/assets";
 import toast from "react-hot-toast";
-import Product from "../pages/Product";
-
 
 
 export const AppContext = createContext(null)

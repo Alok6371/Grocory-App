@@ -58,12 +58,6 @@ const App = () => {
         <Route path="/faq" element={<Faq />} />
         <Route path="/add-address" element={<AddAddress />} />
 
-        {/* SELLER LOGIN */}
-        {/* <Route
-          path="/seller"
-          element={isSeller ? <Navigate to="/seller/add-product" /> : <SellerLogin />}
-        /> */}
-
         {/* SELLER DASHBOARD (PROTECTED) */}
         <Route
           path="/seller"

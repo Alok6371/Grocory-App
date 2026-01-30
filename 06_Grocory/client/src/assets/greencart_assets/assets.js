@@ -33,6 +33,7 @@ import dairy_product_image from "./dairy_product_image.png";
 import bakery_image from "./bakery_image.png";
 import grain_image from "./grain_image.png";
 import potato_image_1 from "./potato_image_1.png";
+import potato_image from "./potato_image.png";
 import potato_image_2 from "./potato_image_2.png";
 import potato_image_3 from "./potato_image_3.png";
 import potato_image_4 from "./potato_image_4.png";
@@ -209,7 +210,7 @@ export const dummyProducts = [
     rating: 3,
     price: 25,
     offerPrice: 20,
-    image: [potato_image_1, potato_image_2, potato_image_3, potato_image_4],
+    image: [potato_image,potato_image_1, potato_image_2, potato_image_3, potato_image_4],
     description: [
       "Fresh and organic",
       "Rich in carbohydrates",

@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { assets, dummyOrders } from "../../assets/greencart_assets/assets";
+import { AppContext } from "../../context/AppContext";
 
 const Orders = () => {
     const [orders, setOrders] = useState([]);
 
+    const {newProduct}=useContext(AppContext)
+
     useEffect(() => {
         setOrders(dummyOrders);
+            console.log(newProduct)
     }, []);
 
     return (

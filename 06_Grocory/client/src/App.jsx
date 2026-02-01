@@ -25,6 +25,7 @@ import AddProduct from "./pages/seller/AddProduct";
 import ProductsList from "./pages/seller/ProductsList";
 import Orders from "./pages/seller/Orders";
 import SellerWelcome from "./componets/seller/SellerWelcome";
+import Datas from "./pages/seller/Datas";
 
 const App = () => {
   const location = useLocation();
@@ -57,6 +58,7 @@ const App = () => {
         {/* USER ROUTES */}
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Product />} />
+        <Route path="/datas" element={<Datas />} />
         <Route path="/products/:category/:id" element={<ProductDetails />} />
         <Route path="/products/:category" element={<ProductCategory />} />
         <Route path="/cart" element={<Cart />} />

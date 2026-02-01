@@ -12,7 +12,7 @@ const AppContextProvider = ({ children }) => {
     //user Login
     const [user, setUser] = useState(true)
 
-    //Seller pat
+    //Seller part
     const [isSeller, setIsSeller] = useState(false)
 
     //Show the login page
@@ -22,6 +22,8 @@ const AppContextProvider = ({ children }) => {
     const [cartItem, setCartItems] = useState({})
     const [searchQuery, setSearchQuery] = useState({})
 
+
+
     /// fetch All Prdoduct data
     const fetchProducts = async () => {
 
@@ -30,6 +32,11 @@ const AppContextProvider = ({ children }) => {
     useEffect(() => {
         fetchProducts();
     }, [])
+
+    //Product Data send to main body
+    const setNewProduct = (newProduct) => {
+        setproduct((prev) => [...prev, newProduct]);
+    };
 
     ///add product in Cart
     const addToCart = (itemsId) => {

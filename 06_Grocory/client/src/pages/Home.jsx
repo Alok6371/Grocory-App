@@ -3,6 +3,7 @@ import Hero from '../componets/home/Hero'
 import Category from '../componets/home/Category'
 import BestSeller from '../componets/home/BestSeller'
 import NewsLetters from '../componets/home/NewsLetters'
+import Datas from './seller/Datas'
 
 
 const Home = () => {
@@ -13,10 +14,11 @@ const Home = () => {
             <BestSeller />
             <NewsLetters /> */}
             {/* <Footer /> */}
-          
+
             <Hero />
             <Category />
             <BestSeller />
+            <Datas />
             <NewsLetters />
 
         </div>

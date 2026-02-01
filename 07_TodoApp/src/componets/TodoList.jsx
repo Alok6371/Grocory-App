@@ -10,23 +10,27 @@ const TodoList = ({ setEditTodo }) => {
 
     return (
         <>
-            <input
-                type="text"
-                placeholder="Search todo..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="border p-2 w-full mb-4"
-            />
+            <div  className="bg-gray-500">
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {filteredTodos.map((todo) => (
-                    <TodoItem
-                        key={todo.id}
-                        todo={todo}
-                        setEditTodo={setEditTodo}
-                    />
-                ))}
+                <input
+                    type="text"
+                    placeholder="Search todo..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="border-2 border-black mt-5 p-2 w-full "
+                />
+
+                <div className="grid grid-cols-1 mt-5 md:grid-cols-3 gap-4 ">
+                    {filteredTodos.map((todo) => (
+                        <TodoItem
+                            key={todo.id}
+                            todo={todo}
+                            setEditTodo={setEditTodo}
+                        />
+                    ))}
+                </div>
             </div>
+
         </>
     );
 };

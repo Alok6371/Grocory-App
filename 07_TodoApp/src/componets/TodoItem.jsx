@@ -4,9 +4,8 @@ const Todoitem = ({ todo, setEditTodo }) => {
     const { deleteTodo } = useTodo();
 
     return (
-        <div className="border p-3 rounded">
+        <div className="border-4 bg-blue-400 p-3 rounded">
             <h3 className="font-bold">{todo.title}</h3>
-
             {todo.image && (
                 <img
                     src={todo.image}

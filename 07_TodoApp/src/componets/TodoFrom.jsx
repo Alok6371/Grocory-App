@@ -3,8 +3,8 @@ import { useTodo } from "../context/Todocontext";
 
 const TodoForm = ({ editTodo, setEditTodo }) => {
     const { addTodo, updateTodo } = useTodo();
-    const [title, setTitle] = useState(editTodo?.title || "");
-    const [image, setImage] = useState(editTodo?.image || "");
+    const [title, setTitle] = useState("");
+    const [image, setImage] = useState("");
 
     const handleImage = (e) => {
         const file = e.target.files[0];
@@ -29,10 +29,11 @@ const TodoForm = ({ editTodo, setEditTodo }) => {
 
         setTitle("");
         setImage("");
+
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-4 border rounded mb-4">
+        <form onSubmit={handleSubmit} className="p-4 border-3 bg-gray-400 border rounded mb-4">
             <input
                 type="text"
                 placeholder="Todo title"

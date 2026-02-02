@@ -68,6 +68,8 @@ const SinglePage = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="rounded-xl p-3 border-2 text-2xl border-black"
+            placeholder="Enter the Title of product"
+
           />
           <input
             type="file"
@@ -89,6 +91,7 @@ const SinglePage = () => {
           className="w-[100%] p-2 text-3xl border-2 border-black m-3 rounded-xl"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          placeholder="Type for Search"
         />
 
         <div className="flex flex-wrap wrap-3  justify-center items-center bg-gray-300 min-h-[60vh] min-w-[70vw] rounded-3xl">

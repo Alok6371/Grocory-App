@@ -1,110 +1,126 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SinglePage = () => {
-  const [todos, setTodos] = useState([]);
-  const [search, setSearch] = useState("");
-  const [editTodo, setEditTodo] = useState(null);
+  const [name, setName] = useState("");
+  const [list, setList] = useState([]);
 
-  const [title, setTitle] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [search, setSearch] = useState("");
+
   const [image, setImage] = useState("");
 
-  // sync form while editing
-  useEffect(() => {
-    if (editTodo) {
-      setTitle(editTodo.title);
-      setImage(editTodo.image);
-    }
-  }, [editTodo]);
-
+  const EditTodo = (item) => {
+    setName(item.name);
+    setEditId(item.id);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title) return;
 
-    if (editTodo) {
-      setTodos(
-        todos.map((t) =>
-          t.id === editTodo.id ? { ...editTodo, title, image } : t,
-        ),
-      );
-      setEditTodo(null);
+    if (editId === null) {
+      setList([
+        ...list,
+        {
+          id: Date.now(),
+          name,
+          image,
+        },
+      ]);
     } else {
-      setTodos([...todos, { id: Date.now(), title, image }]);
+      setList(
+        list.map((item) => (item.id == editId ? { ...item, name, image } : item)),
+      );
+      setEditId(null);
     }
-
-    setTitle("");
+    setName("");
     setImage("");
   };
 
-  const handleImage = (e) => {
+  const DeleteTodo = (id) => {
+    setList(list.filter((item) => item.id !== id));
+  };
+
+  const handleImages = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
-    console.log(reader);
-
-    reader.onloadend = () => setImage(reader.result);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
     reader.readAsDataURL(file);
   };
 
-  const filteredTodos = todos.filter((t) =>
-    t.title.toLowerCase().includes(search.toLowerCase()),
+  const filteredSearch = list.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase()),
   );
 
-  return (
-    <div className="p-10">
-      {/* Search */}
-      <input
-        type="text"
-        placeholder="Search Todo"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="border p-2 w-[60vw] mb-6"
-      />
 
-      {/* Form */}
-      <form onSubmit={handleSubmit} className="flex gap-3 mb-10">
+  return (
+    <div className=" mr-3  p-10 flex items-center justify-center">
+      <div className="bg-green-400 p-10 rounded-xl z-10 w-[60vw]  fixed top-0">
+        <form
+          action=""
+          onSubmit={handleSubmit}
+          className="rounded-xl flex justify-center items-center gap-10"
+        >
+          <input
+            type="text "
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="rounded-xl p-3 border-2 text-2xl border-black"
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImages}
+            className="rounded-xl bg-gray-300 p-2"
+          />
+          <button className="rounded-xl p-4 bg-blue-200 ml-3 " type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      {/* Show Data */}
+
+      <div className="flex flex-col justify-center items-center mr-[15vw] mt-[10vh] ml-[15vw] w-[70vw] ">
         <input
           type="text"
-          placeholder="Enter Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="border p-2 w-[40vw]"
+          className="w-[100%] p-2 text-3xl border-2 border-black m-3 rounded-xl"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
 
-        <input type="file" accept="image/*" onChange={handleImage} />
+        <div className="flex flex-wrap wrap-3  justify-center items-center bg-gray-300 min-h-[60vh] min-w-[70vw] rounded-3xl">
 
-        <button className="bg-green-300 px-4 rounded">
-          {editTodo ? "Update" : "Add"}
-        </button>
-      </form>
+          {
+            filteredSearch.map((t) => (
+              <div className="h-[100%] bg-gray-400  w-[15vw] rounded-xl min-h-[40vh] mt-10 mr-3 mb-3 ">
+                <div className="min-h-[30vh]">
+                  <h3 className="text-3xl ml-3">{t.name}</h3>
+                  {/* {search === "" ? "No Data Found" : search} */}
+                  <img src={t.image} alt="" className="h-[20vh] flex justify-center items-center" />
+                </div>
+                <div className="flex absolute ">
+                  <button
+                    className="bg-blue-300 mt-10 p-2 m-2 rounded-lg"
+                    onClick={() => EditTodo(t)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="bg-blue-300 mt-10 p-2 m-2 rounded-lg"
+                    onClick={() => DeleteTodo(t.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
 
-      {/* List */}
-      <div className="flex flex-wrap gap-6">
-        {filteredTodos.map((todo) => (
-          <div key={todo.id} className="border p-4 w-[15vw]">
-            <h3 className="text-xl text-center">{todo.title}</h3>
+            ))
+          }
+        </div>
 
-            {todo.image && (
-              <img src={todo.image} alt="" className="w-full mt-2" />
-            )}
-
-            <div className="flex flex-col gap-2 mt-3">
-              <button
-                onClick={() => setEditTodo(todo)}
-                className="bg-blue-300 rounded p-1"
-              >
-                Edit
-              </button>
-
-              <button
-                onClick={() => setTodos(todos.filter((t) => t.id !== todo.id))}
-                className="bg-red-300 rounded p-1"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );

@@ -15,8 +15,9 @@ const App = () => {
     //   </div>
     // </TodoProvider>
 
-    <div>
+    <div className='bg-blue-400 min-h-[100vh]'>
       <SinglePage />
+
     </div>
 
   )

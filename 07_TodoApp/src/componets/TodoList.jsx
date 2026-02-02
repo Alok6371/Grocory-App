@@ -10,7 +10,7 @@ const TodoList = ({ setEditTodo }) => {
 
     return (
         <>
-            <div  className="bg-gray-500">
+            <div className="bg-gray-500">
 
                 <input
                     type="text"
